@@ -1,1 +1,6 @@
-{}
+{
+	"openFilterButton": "Open Filter",
+	"title": "Filter",
+	"apply": "Apply",
+	"clearAllLink": "Clear all parameters"
+}
