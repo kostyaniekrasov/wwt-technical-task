@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 
 import { useFilterModalLogic } from '@/hooks'
-import { Header } from '@components/Header'
+import { Header } from '@components'
 
 export const App = () => {
 	const { onFilterOpen } = useFilterModalLogic()
