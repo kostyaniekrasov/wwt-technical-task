@@ -3,7 +3,9 @@ import filter from './filter.json'
 import notFound from './not-found.json'
 
 export const en = {
-	filter: filter,
-	confirm: confirm,
+	translation: {
+		filter: filter,
+		confirm: confirm
+	},
 	'not-found': notFound
 } as const

@@ -7,7 +7,9 @@ interface Props {
 }
 
 const Header = ({ onFilterOpen }: Props) => {
-	const { t } = useTranslation()
+	const { t } = useTranslation('translation', {
+		keyPrefix: 'filter'
+	})
 
 	return (
 		<Flex
@@ -20,7 +22,7 @@ const Header = ({ onFilterOpen }: Props) => {
 				marginLeft="auto"
 				onClick={onFilterOpen}
 			>
-				{t('filter.openFilterButton')}
+				{t('openFilterButton')}
 			</Button>
 		</Flex>
 	)
