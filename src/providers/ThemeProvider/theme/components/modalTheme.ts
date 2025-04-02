@@ -44,7 +44,6 @@ const baseStyle = definePartsStyle({
 		fontWeight: 'medium',
 		textAlign: 'center',
 		p: 0,
-		mb: '32px',
 		color: 'gray.500'
 	},
 
