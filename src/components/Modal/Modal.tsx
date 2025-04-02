@@ -1,7 +1,9 @@
 import {
 	Box,
 	Modal as ChakraModal,
+	Divider,
 	ModalBody,
+	ModalCloseButton,
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
@@ -11,9 +13,19 @@ import {
 interface Props extends Omit<ModalProps, 'children'> {
 	title: string
 	body: React.ReactNode
+	divider?: boolean
+	headerMarginBottom?: string
 }
 
-const Modal = ({ isOpen, onClose, title, body, size = 'xl' }: Props) => {
+const Modal = ({
+	isOpen,
+	onClose,
+	title,
+	body,
+	divider,
+	headerMarginBottom,
+	size = 'xl'
+}: Props) => {
 	return (
 		<ChakraModal
 			isOpen={isOpen}
@@ -23,8 +35,28 @@ const Modal = ({ isOpen, onClose, title, body, size = 'xl' }: Props) => {
 			<ModalOverlay />
 
 			<ModalContent>
-				<ModalHeader>
-					<Box>{title}</Box>
+				<ModalHeader
+					display={'flex'}
+					flexDirection={'column'}
+					gap={divider ? '25px' : '0'}
+					marginBottom={headerMarginBottom ?? '32px'}
+				>
+					<Box
+						display={'flex'}
+						alignItems={'center'}
+						justifyContent={'space-between'}
+					>
+						<Box
+							flex={1}
+							textAlign={'center'}
+						>
+							{title}
+						</Box>
+
+						<ModalCloseButton position={'static'} />
+					</Box>
+
+					{divider && <Divider />}
 				</ModalHeader>
 
 				<ModalBody>{body}</ModalBody>
