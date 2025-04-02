@@ -10,30 +10,51 @@ const baseStyle = definePartsStyle({
 	},
 
 	dialogContainer: {
-		padding: '5rem'
+		padding: { base: '32px 0 0', md: '5rem' }
 	},
 
 	dialog: {
 		borderRadius: 'md',
 		margin: 0,
-		px: '2.5rem'
+		p: { base: '20px', md: '32px' },
+		minHeight: {
+			base: '100%',
+			md: 'auto'
+		}
 	},
 
 	closeButton: {
 		top: '1.1875rem',
-		right: '1.4375rem'
+		right: '1.4375rem',
+		width: { base: '16px', md: '24px' },
+		height: { base: '16px', md: '24px' },
+		color: 'gray.500',
+		borderRadius: 0,
+		svg: {
+			width: { base: '14px', md: '20px' },
+			height: { base: '14px', md: '20px' }
+		},
+		_hover: {
+			transform: 'scale(1.1)'
+		}
 	},
 
 	header: {
-		fontSize: '2.5rem',
+		fontSize: { base: '1.0625rem', md: '2.5rem' },
 		fontWeight: 'medium',
 		textAlign: 'center',
-		pb: 5,
-		borderBottom: '1px solid #AAAAAA'
+		p: 0,
+		mb: '32px',
+		color: 'gray.500'
 	},
 
 	body: {
-		px: 0
+		p: 0,
+		mb: '32px'
+	},
+
+	footer: {
+		p: 0
 	}
 })
 
@@ -50,7 +71,7 @@ const sizes = {
 	},
 	xl: {
 		dialog: {
-			maxW: '100%'
+			maxW: '1280px'
 		}
 	}
 }

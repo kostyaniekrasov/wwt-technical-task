@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 
 import { useFilterModalLogic } from '@/hooks'
-import { Header } from '@components'
+import { Header, Modal } from '@components'
 
 export const App = () => {
 	const { onFilterOpen } = useFilterModalLogic()
@@ -12,6 +12,12 @@ export const App = () => {
 			minH="100dvh"
 		>
 			<Header onFilterOpen={onFilterOpen} />
+			<Modal
+				isOpen={true}
+				onClose={() => {}}
+				title="Test"
+				body={<Box></Box>}
+			/>
 		</Box>
 	)
 }
