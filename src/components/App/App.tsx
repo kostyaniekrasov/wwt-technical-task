@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, ModalBody } from '@chakra-ui/react'
 
 import { useFilterModalLogic } from '@/hooks'
 import { Header, Modal } from '@components'
@@ -16,8 +16,10 @@ export const App = () => {
 				isOpen={true}
 				onClose={() => {}}
 				title="Test"
-				body={<Box></Box>}
-			/>
+				divider
+			>
+				<ModalBody></ModalBody>
+			</Modal>
 		</Box>
 	)
 }

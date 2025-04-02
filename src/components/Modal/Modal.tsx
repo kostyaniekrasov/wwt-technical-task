@@ -2,7 +2,6 @@ import {
 	Box,
 	Modal as ChakraModal,
 	Divider,
-	ModalBody,
 	ModalCloseButton,
 	ModalContent,
 	ModalHeader,
@@ -12,7 +11,7 @@ import {
 
 interface Props extends Omit<ModalProps, 'children'> {
 	title: string
-	body: React.ReactNode
+	children: React.ReactNode
 	divider?: boolean
 	headerMarginBottom?: string
 }
@@ -21,7 +20,7 @@ const Modal = ({
 	isOpen,
 	onClose,
 	title,
-	body,
+	children,
 	divider,
 	headerMarginBottom,
 	size = 'xl'
@@ -59,7 +58,7 @@ const Modal = ({
 					{divider && <Divider />}
 				</ModalHeader>
 
-				<ModalBody>{body}</ModalBody>
+				{children}
 			</ModalContent>
 		</ChakraModal>
 	)
