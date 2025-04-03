@@ -8,7 +8,6 @@ interface FilterState {
 	tempFilters: SearchRequestFilter
 	setFilters: (filters: SearchRequestFilter) => void
 	setTempFilters: (filters: SearchRequestFilter) => void
-	resetTempFilters: () => void
 }
 
 const useFilterStore = create<FilterState>()(
@@ -17,8 +16,7 @@ const useFilterStore = create<FilterState>()(
 			filters: [],
 			tempFilters: [],
 			setFilters: filters => set({ filters }),
-			setTempFilters: filters => set({ tempFilters: filters }),
-			resetTempFilters: () => set({ tempFilters: [] })
+			setTempFilters: filters => set({ tempFilters: filters })
 		}),
 		{ name: 'filter-store' }
 	)
