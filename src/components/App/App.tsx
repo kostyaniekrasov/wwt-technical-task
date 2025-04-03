@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 
 import { useFilterModalLogic } from '@/hooks'
-import { FilterModal, Header } from '@components'
+import { ConfirmModal, FilterModal, Header } from '@components'
 
 export const App = () => {
 	const {
@@ -11,8 +11,15 @@ export const App = () => {
 		handleApplyFilters,
 		tempFilters,
 		handleOptionsChange,
-		handleClearTempFilters
+		handleClearTempFilters,
+		isConfirmOpen,
+		onConfirmClose,
+		handleConfirmFilters,
+		handleUseOldFilter,
+		filters
 	} = useFilterModalLogic()
+
+	console.log(filters)
 	return (
 		<Box
 			maxW="90rem"
@@ -28,6 +35,13 @@ export const App = () => {
 				tempFilters={tempFilters}
 				onOptionsChange={handleOptionsChange}
 				onClearTempFilters={handleClearTempFilters}
+			/>
+
+			<ConfirmModal
+				isOpen={isConfirmOpen}
+				onClose={onConfirmClose}
+				onApply={handleConfirmFilters}
+				useOldFilters={handleUseOldFilter}
 			/>
 		</Box>
 	)
