@@ -9,7 +9,9 @@ export const App = () => {
 		isFilterOpen,
 		onFilterClose,
 		handleApplyFilters,
-		tempFilters
+		tempFilters,
+		handleOptionsChange,
+		handleClearTempFilters
 	} = useFilterModalLogic()
 	return (
 		<Box
@@ -24,8 +26,8 @@ export const App = () => {
 				onClose={onFilterClose}
 				onApply={handleApplyFilters}
 				tempFilters={tempFilters}
-				onClearTempFilters={() => {}}
-				onOptionsChange={() => {}}
+				onOptionsChange={handleOptionsChange}
+				onClearTempFilters={handleClearTempFilters}
 			/>
 		</Box>
 	)
