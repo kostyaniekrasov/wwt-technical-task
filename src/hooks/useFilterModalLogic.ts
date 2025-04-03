@@ -8,8 +8,7 @@ import { SearchRequestFilter } from '@api/types/SearchRequest/SearchRequestFilte
 import useFilterStore from '@store/filterStore'
 
 const useFilterModalLogic = () => {
-	const { filters, tempFilters, setFilters, setTempFilters, resetTempFilters } =
-		useFilterStore()
+	const { filters, tempFilters, setFilters, setTempFilters } = useFilterStore()
 
 	const {
 		isOpen: isFilterOpen,
@@ -32,17 +31,18 @@ const useFilterModalLogic = () => {
 	)
 
 	const handleConfirmFilters = useCallback(() => {
-		setFilters(tempFilters)
-		resetTempFilters()
+		if (tempFilters) {
+			setFilters(tempFilters)
+		}
 		onFilterClose()
 		onConfirmClose()
-	}, [setFilters, tempFilters, onConfirmClose, onFilterClose, resetTempFilters])
+	}, [setFilters, tempFilters, onConfirmClose, onFilterClose])
 
 	const handleUseOldFilter = useCallback(() => {
-		resetTempFilters()
+		setTempFilters(filters)
 		onFilterClose()
 		onConfirmClose()
-	}, [resetTempFilters, onFilterClose, onConfirmClose])
+	}, [setTempFilters, onFilterClose, onConfirmClose, filters])
 
 	const handleOptionsChange = useCallback(
 		(filter: FilterItem, selectedOptions: string[]) => {
