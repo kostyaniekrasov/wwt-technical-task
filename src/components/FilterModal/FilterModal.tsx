@@ -42,7 +42,6 @@ const FilterModal = ({
 			isOpen={isOpen}
 			onClose={onClose}
 			title={t('filter.title')}
-			size="lg"
 			divider
 		>
 			<ModalBody>

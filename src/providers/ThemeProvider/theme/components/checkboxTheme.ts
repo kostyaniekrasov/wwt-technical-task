@@ -10,32 +10,44 @@ const defaultControlStylesOnAction = {
 }
 
 const baseStyle = definePartsStyle({
+	container: {
+		_hover: {
+			'.chakra-checkbox__control:not([data-checked])': {
+				bg: 'gray.100'
+			}
+		}
+	},
 	control: {
 		bg: 'white',
-		borderWidth: '0.0625rem',
-		borderColor: 'black',
-		borderRadius: 0,
+		borderWidth: '2px',
+		borderColor: 'gray.500',
+		borderRadius: '2px',
 
 		_hover: {
-			...defaultControlStylesOnAction,
-			_checked: defaultControlStylesOnAction
+			...defaultControlStylesOnAction
+			// _checked: defaultControlStylesOnAction
 		},
-		_checked: defaultControlStylesOnAction
+		_checked: {
+			...defaultControlStylesOnAction,
+			bg: 'gray.500'
+		}
 	},
 	icon: {
-		color: 'black',
+		color: 'white',
 		// svg has inline stroke-width param, so I don't see any other way to set this parameter.
 		strokeWidth: '0.0625rem!important'
 	},
 	label: {
-		ml: '0.75rem'
+		color: 'gray.500',
+		ml: { base: '0.2rem', md: '0.75rem' },
+		fontSize: '1rem'
 	}
 })
 
 const mdSize = definePartsStyle({
 	control: {
-		w: '1.5rem',
-		h: '1.5rem'
+		w: '20px',
+		h: '20px'
 	},
 	icon: {
 		fontSize: '0.75rem'
