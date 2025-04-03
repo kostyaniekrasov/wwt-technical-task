@@ -24,7 +24,7 @@ const FilterCaterory = ({ filter, optionsChange, selectedOptions }: Props) => {
 		<FormControl
 			key={filter.id}
 			pb={'32px'}
-			borderBottom={'32px'}
+			borderBottom={'2px solid'}
 			borderColor={'gray.200'}
 		>
 			<Tooltip
