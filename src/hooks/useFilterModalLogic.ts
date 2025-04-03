@@ -15,6 +15,7 @@ const useFilterModalLogic = () => {
 		onOpen: onFilterOpen,
 		onClose: onFilterClose
 	} = useDisclosure()
+
 	const {
 		isOpen: isConfirmOpen,
 		onOpen: onConfirmOpen,

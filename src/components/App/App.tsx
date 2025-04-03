@@ -1,10 +1,16 @@
 import { Box } from '@chakra-ui/react'
 
 import { useFilterModalLogic } from '@/hooks'
-import { Header } from '@components'
+import { FilterModal, Header } from '@components'
 
 export const App = () => {
-	const { onFilterOpen } = useFilterModalLogic()
+	const {
+		onFilterOpen,
+		isFilterOpen,
+		onFilterClose,
+		handleApplyFilters,
+		tempFilters
+	} = useFilterModalLogic()
 	return (
 		<Box
 			maxW="90rem"
@@ -12,6 +18,15 @@ export const App = () => {
 			minH="100dvh"
 		>
 			<Header onFilterOpen={onFilterOpen} />
+
+			<FilterModal
+				isOpen={isFilterOpen}
+				onClose={onFilterClose}
+				onApply={handleApplyFilters}
+				tempFilters={tempFilters}
+				onClearTempFilters={() => {}}
+				onOptionsChange={() => {}}
+			/>
 		</Box>
 	)
 }

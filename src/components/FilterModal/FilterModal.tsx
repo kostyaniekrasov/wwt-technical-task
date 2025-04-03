@@ -1,20 +1,13 @@
 import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import {
-	Box,
-	Button,
-	Link,
-	ModalBody,
-	ModalFooter,
-	VStack
-} from '@chakra-ui/react'
+import { Button, Link, ModalBody, ModalFooter, VStack } from '@chakra-ui/react'
 
 import { FilterItem } from '@api/types/Filter'
 import { SearchRequestFilter } from '@api/types/SearchRequest/SearchRequestFilter'
 
 import { useFilterData } from '@/hooks'
-import { Modal } from '@components/Modal'
+import { FilterCategory, Modal } from '@components'
 
 interface Props {
 	isOpen: boolean
@@ -30,6 +23,7 @@ const FilterModal = ({
 	onClose,
 	onApply,
 	tempFilters,
+	onOptionsChange,
 	onClearTempFilters
 }: Props) => {
 	const { t } = useTranslation()
@@ -49,6 +43,7 @@ const FilterModal = ({
 			onClose={onClose}
 			title={t('filter.title')}
 			size="lg"
+			divider
 		>
 			<ModalBody>
 				{isLoading ? (
@@ -56,7 +51,17 @@ const FilterModal = ({
 				) : (
 					<VStack>
 						{filterData?.map(filter => {
-							return <Box key={filter.id}>{filter.id}</Box> //FilterCaterory component
+							const selectedOptions =
+								tempFilters.find(tempFilter => tempFilter.id === filter.id)
+									?.optionsIds || []
+							return (
+								<FilterCategory
+									key={filter.id}
+									filter={filter}
+									optionsChange={onOptionsChange}
+									selectedOptions={selectedOptions}
+								/>
+							)
 						})}
 					</VStack>
 				)}
