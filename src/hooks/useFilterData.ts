@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { FilterItem } from '@api/types/Filter'
 
-const useFilterData = () => {
+const useFilterData = (isOpen: boolean) => {
 	return useQuery<FilterItem[]>({
 		queryKey: ['filterData'],
 		queryFn: async () => {
@@ -14,7 +14,8 @@ const useFilterData = () => {
 			return data.filterItems as FilterItem[]
 		},
 		staleTime: 1000 * 60 * 5,
-		retry: 1
+		retry: 1,
+		enabled: isOpen
 	})
 }
 

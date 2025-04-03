@@ -27,7 +27,7 @@ const FilterModal = ({
 	onClearTempFilters
 }: Props) => {
 	const { t } = useTranslation()
-	const { data: filterData, isLoading } = useFilterData()
+	const { data: filterData, isLoading } = useFilterData(isOpen)
 
 	const handleApplyFilters = useCallback(() => {
 		onApply(tempFilters)
