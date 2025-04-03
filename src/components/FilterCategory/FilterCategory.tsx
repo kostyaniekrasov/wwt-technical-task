@@ -1,3 +1,5 @@
+import React from 'react'
+
 import {
 	Box,
 	Checkbox,
@@ -20,6 +22,7 @@ interface Props {
 }
 
 const FilterCaterory = ({ filter, optionsChange, selectedOptions }: Props) => {
+	console.log('filter category render', filter.id)
 	return (
 		<FormControl
 			key={filter.id}
@@ -95,4 +98,10 @@ const FilterCaterory = ({ filter, optionsChange, selectedOptions }: Props) => {
 	)
 }
 
-export default FilterCaterory
+export default React.memo(FilterCaterory, (prevProps, nextProps) => {
+	return (
+		prevProps.filter.id === nextProps.filter.id &&
+		JSON.stringify(prevProps.selectedOptions) ===
+			JSON.stringify(nextProps.selectedOptions)
+	)
+})
