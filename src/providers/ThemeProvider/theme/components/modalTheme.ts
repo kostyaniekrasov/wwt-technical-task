@@ -15,8 +15,13 @@ const baseStyle = definePartsStyle({
 
 	dialog: {
 		borderRadius: 'md',
+		borderBottomRadius: {
+			base: '0',
+			md: 'md'
+		},
+
 		margin: 0,
-		p: { base: '20px', md: '32px' },
+		p: { base: '20px 20px 80px', md: '32px' },
 		minHeight: {
 			base: '100%',
 			md: 'auto'

@@ -22,6 +22,7 @@ const ConfirmModal = ({ isOpen, onClose, onApply, useOldFilters }: Props) => {
 		>
 			<ModalFooter
 				display={'flex'}
+				flex={1}
 				flexDirection={{
 					base: 'column',
 					md: 'row'
@@ -30,7 +31,6 @@ const ConfirmModal = ({ isOpen, onClose, onApply, useOldFilters }: Props) => {
 					base: '16px',
 					md: '32px'
 				}}
-				margin={0}
 				justifyContent={{ base: 'flex-end', md: 'center' }}
 			>
 				<Button
