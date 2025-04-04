@@ -2,13 +2,19 @@ import { useCallback } from 'react'
 
 import { useDisclosure } from '@chakra-ui/react'
 
-import { FilterItem, FilterType } from '@api/types/Filter'
 import { SearchRequestFilter } from '@api/types/SearchRequest/SearchRequestFilter'
 
 import useFilterStore from '@store/filterStore'
 
 const useFilterModalLogic = () => {
-	const { filters, tempFilters, setFilters, setTempFilters } = useFilterStore()
+	const {
+		filters,
+		tempFilters,
+		setFilters,
+		setTempFilters,
+		updateFilterOptions,
+		clearTempFilters
+	} = useFilterStore()
 
 	const {
 		isOpen: isFilterOpen,
@@ -44,44 +50,6 @@ const useFilterModalLogic = () => {
 		onConfirmClose()
 	}, [setTempFilters, onFilterClose, onConfirmClose, filters])
 
-	const handleOptionsChange = useCallback(
-		(filter: FilterItem, selectedOptions: string[]) => {
-			const existingFilter = tempFilters.find(
-				prevTempFilter => prevTempFilter.id === filter.id
-			)
-
-			if (
-				existingFilter &&
-				JSON.stringify(existingFilter.optionsIds) ===
-					JSON.stringify(selectedOptions)
-			) {
-				return
-			}
-
-			const newFilters = existingFilter
-				? tempFilters.map(prevTempFilter =>
-						prevTempFilter.id === filter.id
-							? { ...prevTempFilter, optionsIds: selectedOptions }
-							: prevTempFilter
-					)
-				: [
-						...tempFilters,
-						{
-							id: filter.id,
-							type: FilterType.OPTION,
-							optionsIds: selectedOptions
-						}
-					]
-
-			setTempFilters(newFilters)
-		},
-		[tempFilters, setTempFilters]
-	)
-
-	const handleClearTempFilters = useCallback(() => {
-		setTempFilters([])
-	}, [setTempFilters])
-
 	return {
 		filters,
 		tempFilters,
@@ -94,8 +62,8 @@ const useFilterModalLogic = () => {
 		handleApplyFilters,
 		handleConfirmFilters,
 		handleUseOldFilter,
-		handleOptionsChange,
-		handleClearTempFilters
+		handleOptionsChange: updateFilterOptions,
+		handleClearTempFilters: clearTempFilters
 	}
 }
 

@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
 import { useFilterModalLogic } from '@/hooks'
 import { ConfirmModal, FilterModal, Header } from '@components'
@@ -20,6 +20,7 @@ export const App = () => {
 	} = useFilterModalLogic()
 
 	console.log(filters)
+
 	return (
 		<Box
 			maxW="90rem"
@@ -27,6 +28,35 @@ export const App = () => {
 			minH="100dvh"
 		>
 			<Header onFilterOpen={onFilterOpen} />
+
+			<Box p={4}>
+				{filters.map(filter => (
+					<Box
+						key={filter.id}
+						display={'flex'}
+						flexDirection={'column'}
+						mb={4}
+					>
+						<Text
+							fontSize={'xl'}
+							fontWeight={'bold'}
+						>
+							{filter.id}
+						</Text>
+
+						{filter.optionsIds.map(option => (
+							<Text
+								key={option}
+								fontSize={'lg'}
+								display={'flex'}
+								flexDirection={'column'}
+							>
+								{option}
+							</Text>
+						))}
+					</Box>
+				))}
+			</Box>
 
 			<FilterModal
 				isOpen={isFilterOpen}

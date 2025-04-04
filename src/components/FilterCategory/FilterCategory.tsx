@@ -21,8 +21,8 @@ interface Props {
 	selectedOptions: string[]
 }
 
-const FilterCaterory = ({ filter, optionsChange, selectedOptions }: Props) => {
-	console.log('filter category render', filter.id)
+const FilterCategory = ({ filter, optionsChange, selectedOptions }: Props) => {
+	console.log('filter category render')
 	return (
 		<FormControl
 			key={filter.id}
@@ -98,7 +98,7 @@ const FilterCaterory = ({ filter, optionsChange, selectedOptions }: Props) => {
 	)
 }
 
-export default React.memo(FilterCaterory, (prevProps, nextProps) => {
+export default React.memo(FilterCategory, (prevProps, nextProps) => {
 	return (
 		prevProps.filter.id === nextProps.filter.id &&
 		JSON.stringify(prevProps.selectedOptions) ===
