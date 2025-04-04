@@ -34,20 +34,28 @@ const useFilterStore = create<FilterState>()(
 					return
 				}
 
-				const newFilters = existingFilter
-					? tempFilters.map(prevTempFilter =>
-							prevTempFilter.id === filter.id
-								? { ...prevTempFilter, optionsIds: selectedOptions }
-								: prevTempFilter
-						)
-					: [
-							...tempFilters,
-							{
-								id: filter.id,
-								type: FilterType.OPTION,
-								optionsIds: selectedOptions
-							}
-						]
+				let newFilters
+
+				if (selectedOptions.length === 0) {
+					newFilters = tempFilters.filter(
+						prevTempFilter => prevTempFilter.id !== filter.id
+					)
+				} else if (existingFilter) {
+					newFilters = tempFilters.map(prevTempFilter =>
+						prevTempFilter.id === filter.id
+							? { ...prevTempFilter, optionsIds: selectedOptions }
+							: prevTempFilter
+					)
+				} else {
+					newFilters = [
+						...tempFilters,
+						{
+							id: filter.id,
+							type: FilterType.OPTION,
+							optionsIds: selectedOptions
+						}
+					]
+				}
 
 				set({ tempFilters: newFilters })
 			},
