@@ -44,7 +44,7 @@ const FilterModal = ({
 			title={t('filter.title')}
 			divider
 		>
-			<ModalBody>
+			<ModalBody mb={'32px'}>
 				{isLoading ? (
 					<div>Loading...</div>
 				) : (
