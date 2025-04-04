@@ -48,8 +48,7 @@ const baseStyle = definePartsStyle({
 	},
 
 	body: {
-		p: 0,
-		mb: '32px'
+		p: 0
 	},
 
 	footer: {

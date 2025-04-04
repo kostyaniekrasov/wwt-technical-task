@@ -48,7 +48,7 @@ const FilterModal = ({
 				{isLoading ? (
 					<div>Loading...</div>
 				) : (
-					<VStack>
+					<VStack gap={'32px'}>
 						{filterData?.map(filter => {
 							const selectedOptions =
 								tempFilters.find(tempFilter => tempFilter.id === filter.id)
