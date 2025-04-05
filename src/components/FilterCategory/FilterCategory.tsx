@@ -22,7 +22,6 @@ interface Props {
 }
 
 const FilterCategory = ({ filter, optionsChange, selectedOptions }: Props) => {
-	console.log('filter category render')
 	return (
 		<FormControl
 			key={filter.id}

@@ -6,6 +6,7 @@ import svgr from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig(() => ({
+	base: '/wwt-technical-task/',
 	resolve: {
 		alias: {
 			'@api': path.resolve(__dirname, './src/api'),

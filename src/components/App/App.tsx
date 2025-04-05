@@ -19,8 +19,6 @@ export const App = () => {
 		filters
 	} = useFilterModalLogic()
 
-	console.log(filters)
-
 	return (
 		<Box
 			maxW="90rem"
